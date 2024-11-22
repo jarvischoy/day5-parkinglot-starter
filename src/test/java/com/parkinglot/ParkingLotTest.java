@@ -131,4 +131,19 @@ public class ParkingLotTest {
         // Then
         assertTrue(systemOut().contains("Unrecognized parking ticket."));
     }
+
+    @Test
+    void should_return_unrecognized_error_message_when_fetch_given_used_ticket() {
+        // Given
+        ParkingLot parkingLot = new ParkingLot();
+        Car car = new Car();
+        Ticket ticket = parkingLot.park(car);
+        parkingLot.fetch(ticket);
+
+        // When
+        Car fetchedCar = parkingLot.fetch(ticket);
+
+        // Then
+        assertTrue(systemOut().contains("Unrecognized parking ticket."));
+    }
 }
