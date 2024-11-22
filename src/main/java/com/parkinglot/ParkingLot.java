@@ -39,6 +39,10 @@ public class ParkingLot {
         return capacity - parkingRecord.size();
     }
 
+    public double getAvailablePositionRate() {
+        return (double) getAvailablePosition() / capacity;
+    }
+
     public int getId() {
         return id;
     }

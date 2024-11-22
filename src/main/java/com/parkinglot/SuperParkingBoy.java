@@ -5,10 +5,10 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
-public class SmartParkingBoy {
+public class SuperParkingBoy {
     private List<ParkingLot> parkingLots;
 
-    public SmartParkingBoy() {
+    public SuperParkingBoy() {
         this.parkingLots = new ArrayList<>();
     }
 
@@ -17,10 +17,10 @@ public class SmartParkingBoy {
     }
 
     public Ticket park(Car car) {
-        // park into the parking lot with the most available positions
+        // park into the parking lot with the most rate of available positions
         return parkingLots.stream()
                 .filter(parkingLot -> !parkingLot.isFull())
-                .max(Comparator.comparingInt(ParkingLot::getAvailablePosition))
+                .max(Comparator.comparingDouble(ParkingLot::getAvailablePositionRate))
                 .orElseThrow(NoAvailablePositionException::new)
                 .park(car);
     }
