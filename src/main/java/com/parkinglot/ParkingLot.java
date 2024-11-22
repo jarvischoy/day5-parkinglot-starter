@@ -6,6 +6,7 @@ import java.util.Map;
 public class ParkingLot {
     private static final int DEFAULT_CAPACITY = 10;
 
+    private int id;
     private final int capacity;
     private final Map<Ticket, Car> parkingRecord;
 
@@ -20,20 +21,16 @@ public class ParkingLot {
     }
 
     public Ticket park(Car car) {
-        if (parkingRecord.size() >= capacity) {
-            throw new NoAvailablePositionException();
-        }
-
         Ticket ticket = new Ticket();
         parkingRecord.put(ticket, car);
         return ticket;
     }
 
     public Car fetch(Ticket ticket) {
-        if (parkingRecord.get(ticket) == null) {
-            throw new UnrecognizedTicketException();
-        }
-
         return parkingRecord.remove(ticket);
+    }
+
+    public boolean isFull() {
+        return parkingRecord.size() >= capacity;
     }
 }
