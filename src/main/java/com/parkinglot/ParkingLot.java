@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class ParkingLot {
     private static final int DEFAULT_CAPACITY = 10;
+    private static final String UNRECOGNIZED_TICKET = "Unrecognized parking ticket.";
 
     private final int capacity;
     private final Map<Ticket, Car> parkingRecord;
@@ -29,6 +30,10 @@ public class ParkingLot {
     }
 
     public Car fetch(Ticket ticket) {
-        return parkingRecord.remove(ticket);
+        Car fetchedCar = parkingRecord.remove(ticket);
+        if (fetchedCar == null) {
+            System.out.println(UNRECOGNIZED_TICKET);
+        }
+        return fetchedCar;
     }
 }
