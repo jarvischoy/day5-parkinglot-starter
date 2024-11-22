@@ -73,22 +73,23 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_null_when_fetch_given_incorrect_ticket() {
+    void should_throw_unrecognized_error_message_when_fetch_given_unrecognized_ticket() {
         // Given
         ParkingLot parkingLot = new ParkingLot();
         Car car = new Car();
-        Ticket correctTicket = parkingLot.park(car);
-        Ticket incorrectTicket = new Ticket();
+        Ticket ticket = new Ticket();
 
         // When
-        Car fetchedCar = parkingLot.fetch(incorrectTicket);
-
-        // Then
-        assertNull(fetchedCar);
+        try {
+            Car fetchedCar = parkingLot.fetch(ticket);
+        } catch (UnrecognizedTicketException e) {
+            // Then
+            assertTrue(e.getMessage().contains("Unrecognized parking ticket."));
+        }
     }
 
     @Test
-    void should_return_null_when_fetch_given_used_ticket() {
+    void should_throw_unrecognized_error_message_when_fetch_given_used_ticket() {
         // Given
         ParkingLot parkingLot = new ParkingLot();
         Car car = new Car();
@@ -96,14 +97,16 @@ public class ParkingLotTest {
         parkingLot.fetch(ticket);
 
         // When
-        Car fetchedCar = parkingLot.fetch(ticket);
-
-        // Then
-        assertNull(fetchedCar);
+        try {
+            Car fetchedCar = parkingLot.fetch(ticket);
+        } catch (UnrecognizedTicketException e) {
+            // Then
+            assertTrue(e.getMessage().contains("Unrecognized parking ticket."));
+        }
     }
 
     @Test
-    void should_return_null_when_park_given_parkingLot_is_full() {
+    void should_throw_no_available_position_error_message_when_park_given_parkingLot_is_full() {
         // Given
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
@@ -112,38 +115,13 @@ public class ParkingLotTest {
         Car carToPark = new Car();
 
         // When
-        Ticket ticket = parkingLot.park(carToPark);
-
-        // Then
-        assertNull(ticket);
+        try {
+            Ticket ticket = parkingLot.park(carToPark);
+        } catch (NoAvailablePositionException e) {
+            // Then
+            assertTrue(e.getMessage().contains("No available position."));
+        }
     }
 
-    @Test
-    void should_return_unrecognized_error_message_when_fetch_given_unrecognized_ticket() {
-        // Given
-        ParkingLot parkingLot = new ParkingLot();
-        Car car = new Car();
-        Ticket ticket = new Ticket();
 
-        // When
-        Car fetchedCar = parkingLot.fetch(ticket);
-
-        // Then
-        assertTrue(systemOut().contains("Unrecognized parking ticket."));
-    }
-
-    @Test
-    void should_return_unrecognized_error_message_when_fetch_given_used_ticket() {
-        // Given
-        ParkingLot parkingLot = new ParkingLot();
-        Car car = new Car();
-        Ticket ticket = parkingLot.park(car);
-        parkingLot.fetch(ticket);
-
-        // When
-        Car fetchedCar = parkingLot.fetch(ticket);
-
-        // Then
-        assertTrue(systemOut().contains("Unrecognized parking ticket."));
-    }
 }
