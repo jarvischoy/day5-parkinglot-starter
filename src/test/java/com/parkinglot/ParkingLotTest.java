@@ -1,25 +1,10 @@
 package com.parkinglot;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotTest {
-
-    private ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-
-    @BeforeEach
-    public void setup() {
-        System.setOut(new PrintStream(outContent));
-    }
-
-    private String systemOut() {
-        return outContent.toString();
-    }
 
     @Test
     public void testInitParkingLotNotNull() {
@@ -82,8 +67,9 @@ public class ParkingLotTest {
         // When
         try {
             Car fetchedCar = parkingLot.fetch(ticket);
-        } catch (UnrecognizedTicketException e) {
+        } catch (Exception e) {
             // Then
+            assertEquals(e.getClass(), UnrecognizedTicketException.class);
             assertTrue(e.getMessage().contains("Unrecognized parking ticket."));
         }
     }
@@ -99,8 +85,9 @@ public class ParkingLotTest {
         // When
         try {
             Car fetchedCar = parkingLot.fetch(ticket);
-        } catch (UnrecognizedTicketException e) {
+        } catch (Exception e) {
             // Then
+            assertEquals(e.getClass(), UnrecognizedTicketException.class);
             assertTrue(e.getMessage().contains("Unrecognized parking ticket."));
         }
     }
@@ -117,11 +104,10 @@ public class ParkingLotTest {
         // When
         try {
             Ticket ticket = parkingLot.park(carToPark);
-        } catch (NoAvailablePositionException e) {
+        } catch (Exception e) {
             // Then
+            assertEquals(e.getClass(), NoAvailablePositionException.class);
             assertTrue(e.getMessage().contains("No available position."));
         }
     }
-
-
 }
