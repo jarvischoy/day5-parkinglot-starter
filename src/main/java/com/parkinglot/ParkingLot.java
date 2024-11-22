@@ -6,7 +6,8 @@ import java.util.Map;
 public class ParkingLot {
     private static final int DEFAULT_CAPACITY = 10;
 
-    private int id;
+    // use clock to generate id
+    private int id = (int) System.currentTimeMillis();
     private final int capacity;
     private final Map<Ticket, Car> parkingRecord;
 
@@ -21,7 +22,7 @@ public class ParkingLot {
     }
 
     public Ticket park(Car car) {
-        Ticket ticket = new Ticket();
+        Ticket ticket = new Ticket(id);
         parkingRecord.put(ticket, car);
         return ticket;
     }
@@ -32,5 +33,13 @@ public class ParkingLot {
 
     public boolean isFull() {
         return parkingRecord.size() >= capacity;
+    }
+
+    public int getAvailablePosition() {
+        return capacity - parkingRecord.size();
+    }
+
+    public int getId() {
+        return id;
     }
 }
