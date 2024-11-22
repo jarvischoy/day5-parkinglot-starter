@@ -1,20 +1,9 @@
 package com.parkinglot;
 
-import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
 import java.util.Objects;
 
-public class SuperParkingBoy {
-    private List<ParkingLot> parkingLots;
-
-    public SuperParkingBoy() {
-        this.parkingLots = new ArrayList<>();
-    }
-
-    public void addParkingLot(ParkingLot parkingLot) {
-        this.parkingLots.add(parkingLot);
-    }
+public class SuperParkingBoy extends ParkingBoy{
 
     public Ticket park(Car car) {
         // park into the parking lot with the most rate of available positions

@@ -1,19 +1,8 @@
 package com.parkinglot;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
-public class StandardParkingBoy {
-    private List<ParkingLot> parkingLots;
-
-    public StandardParkingBoy() {
-        this.parkingLots = new ArrayList<>();
-    }
-
-    public void addParkingLot(ParkingLot parkingLot) {
-        this.parkingLots.add(parkingLot);
-    }
+public class StandardParkingBoy extends ParkingBoy{
 
     public Ticket park(Car car) {
         return parkingLots.stream()
