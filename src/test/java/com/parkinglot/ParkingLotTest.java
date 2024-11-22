@@ -2,6 +2,8 @@ package com.parkinglot;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotTest {
@@ -16,7 +18,7 @@ public class ParkingLotTest {
     void should_return_tickets_when_park_given_a_car() {
         // Given
         ParkingLot parkingLot = new ParkingLot();
-        Car car = new Car(1);
+        Car car = new Car();
 
         // When
         Ticket ticket = parkingLot.park(car);
@@ -29,7 +31,7 @@ public class ParkingLotTest {
     void should_return_parked_car_when_fetch_given_valid_ticket() {
         // Given
         ParkingLot parkingLot = new ParkingLot();
-        Car car = new Car(1);
+        Car car = new Car();
         Ticket ticket = parkingLot.park(car);
 
         // When
@@ -43,8 +45,8 @@ public class ParkingLotTest {
     void should_return_correct_cars_when_fetch_given_multiple_valid_tickets() {
         // Given
         ParkingLot parkingLot = new ParkingLot();
-        Car car1 = new Car(1);
-        Car car2 = new Car(2);
+        Car car1 = new Car();
+        Car car2 = new Car();
         Ticket ticket1 = parkingLot.park(car1);
         Ticket ticket2 = parkingLot.park(car2);
 
@@ -61,7 +63,7 @@ public class ParkingLotTest {
     void should_return_null_when_fetch_given_incorrect_ticket() {
         // Given
         ParkingLot parkingLot = new ParkingLot();
-        Car car = new Car(1);
+        Car car = new Car();
         Ticket correctTicket = parkingLot.park(car);
         Ticket incorrectTicket = new Ticket();
 
@@ -76,14 +78,30 @@ public class ParkingLotTest {
     void should_return_null_when_fetch_given_used_ticket() {
         // Given
         ParkingLot parkingLot = new ParkingLot();
-        Car car = new Car(1);
+        Car car = new Car();
         Ticket ticket = parkingLot.park(car);
         parkingLot.fetch(ticket);
-        
+
         // When
         Car fetchedCar = parkingLot.fetch(ticket);
-        
+
         // Then
         assertNull(fetchedCar);
+    }
+
+    @Test
+    void should_return_null_when_park_given_parkingLot_is_full() {
+        // Given
+        ParkingLot parkingLot = new ParkingLot(1);
+        Car car = new Car();
+        parkingLot.park(car);
+
+        Car carToPark = new Car();
+
+        // When
+        Ticket ticket = parkingLot.park(carToPark);
+
+        // Then
+        assertNull(ticket);
     }
 }
