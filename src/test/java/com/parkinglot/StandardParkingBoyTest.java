@@ -10,7 +10,7 @@ public class StandardParkingBoyTest {
     void should_return_tickets_when_park_given_a_car_and_parkingLot() {
         // Given
         ParkingLot parkingLot = new ParkingLot();
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy();
+        ParkingBoy standardParkingBoy = new ParkingBoy();
         standardParkingBoy.addParkingLot(parkingLot);
         Car car = new Car();
 
@@ -25,7 +25,7 @@ public class StandardParkingBoyTest {
     void should_return_parked_car_when_fetch_given_valid_ticket_and_parkingLot() {
         // Given
         ParkingLot parkingLot = new ParkingLot();
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy();
+        ParkingBoy standardParkingBoy = new ParkingBoy();
         standardParkingBoy.addParkingLot(parkingLot);
         Car car = new Car();
         Ticket ticket = standardParkingBoy.park(car);
@@ -41,7 +41,7 @@ public class StandardParkingBoyTest {
     void should_return_correct_cars_when_fetch_given_multiple_valid_tickets_and_parkingLot() {
         // Given
         ParkingLot parkingLot = new ParkingLot();
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy();
+        ParkingBoy standardParkingBoy = new ParkingBoy();
         standardParkingBoy.addParkingLot(parkingLot);
         Car car1 = new Car();
         Car car2 = new Car();
@@ -61,7 +61,7 @@ public class StandardParkingBoyTest {
     void should_throw_unrecognized_error_message_when_fetch_given_unrecognized_ticket_and_parkingLot() {
         // Given
         ParkingLot parkingLot = new ParkingLot();
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy();
+        ParkingBoy standardParkingBoy = new ParkingBoy();
         standardParkingBoy.addParkingLot(parkingLot);
         Car car = new Car();
         Ticket ticket = new Ticket();
@@ -80,7 +80,7 @@ public class StandardParkingBoyTest {
     void should_throw_unrecognized_error_message_when_fetch_given_used_ticket_and_parkingLot() {
         // Given
         ParkingLot parkingLot = new ParkingLot();
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy();
+        ParkingBoy standardParkingBoy = new ParkingBoy();
         standardParkingBoy.addParkingLot(parkingLot);
         Car car = new Car();
         Ticket ticket = standardParkingBoy.park(car);
@@ -100,7 +100,7 @@ public class StandardParkingBoyTest {
     void should_throw_no_available_position_error_message_when_park_given_parkingLot_is_full_and_parkingLot() {
         // Given
         ParkingLot parkingLot = new ParkingLot(1);
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy();
+        ParkingBoy standardParkingBoy = new ParkingBoy();
         standardParkingBoy.addParkingLot(parkingLot);
         Car car = new Car();
         standardParkingBoy.park(car);
@@ -122,7 +122,7 @@ public class StandardParkingBoyTest {
         // Given
         ParkingLot parkingLot1 = new ParkingLot();
         ParkingLot parkingLot2 = new ParkingLot();
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy();
+        ParkingBoy standardParkingBoy = new ParkingBoy();
         standardParkingBoy.addParkingLot(parkingLot1);
         standardParkingBoy.addParkingLot(parkingLot2);
         Car car = new Car();
@@ -139,7 +139,7 @@ public class StandardParkingBoyTest {
         // Given
         ParkingLot parkingLot1 = new ParkingLot(1);
         ParkingLot parkingLot2 = new ParkingLot(1);
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy();
+        ParkingBoy standardParkingBoy = new ParkingBoy();
         standardParkingBoy.addParkingLot(parkingLot1);
         standardParkingBoy.addParkingLot(parkingLot2);
         Car car1 = new Car();
@@ -160,7 +160,7 @@ public class StandardParkingBoyTest {
         // Given
         ParkingLot parkingLot1 = new ParkingLot();
         ParkingLot parkingLot2 = new ParkingLot();
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy();
+        ParkingBoy standardParkingBoy = new ParkingBoy();
         standardParkingBoy.addParkingLot(parkingLot1);
         standardParkingBoy.addParkingLot(parkingLot2);
         Car car1 = new Car();
@@ -182,7 +182,7 @@ public class StandardParkingBoyTest {
         // Given
         ParkingLot parkingLot1 = new ParkingLot();
         ParkingLot parkingLot2 = new ParkingLot();
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy();
+        ParkingBoy standardParkingBoy = new ParkingBoy();
         standardParkingBoy.addParkingLot(parkingLot1);
         standardParkingBoy.addParkingLot(parkingLot2);
         Car car1 = new Car();
@@ -205,7 +205,7 @@ public class StandardParkingBoyTest {
         // Given
         ParkingLot parkingLot1 = new ParkingLot();
         ParkingLot parkingLot2 = new ParkingLot();
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy();
+        ParkingBoy standardParkingBoy = new ParkingBoy();
         standardParkingBoy.addParkingLot(parkingLot1);
         standardParkingBoy.addParkingLot(parkingLot2);
         Car car1 = new Car();
@@ -227,7 +227,7 @@ public class StandardParkingBoyTest {
         // Given
         ParkingLot parkingLot1 = new ParkingLot(1);
         ParkingLot parkingLot2 = new ParkingLot(1);
-        StandardParkingBoy standardParkingBoy = new StandardParkingBoy();
+        ParkingBoy standardParkingBoy = new ParkingBoy();
         standardParkingBoy.addParkingLot(parkingLot1);
         standardParkingBoy.addParkingLot(parkingLot2);
         Car car1 = new Car();

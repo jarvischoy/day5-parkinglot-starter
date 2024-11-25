@@ -10,7 +10,7 @@ public class SuperParkingBoyTest {
     void should_return_tickets_when_park_given_a_car_and_parkingLot() {
         // Given
         ParkingLot parkingLot = new ParkingLot();
-        SuperParkingBoy superParkingBoy = new SuperParkingBoy();
+        ParkingBoy superParkingBoy = new ParkingBoy(new SuperParkingStrategy());
         superParkingBoy.addParkingLot(parkingLot);
         Car car = new Car();
 
@@ -25,7 +25,7 @@ public class SuperParkingBoyTest {
     void should_return_parked_car_when_fetch_given_valid_ticket_and_parkingLot() {
         // Given
         ParkingLot parkingLot = new ParkingLot();
-        SuperParkingBoy superParkingBoy = new SuperParkingBoy();
+        ParkingBoy superParkingBoy = new ParkingBoy(new SuperParkingStrategy());
         superParkingBoy.addParkingLot(parkingLot);
         Car car = new Car();
         Ticket ticket = superParkingBoy.park(car);
@@ -41,7 +41,7 @@ public class SuperParkingBoyTest {
     void should_return_correct_cars_when_fetch_given_multiple_valid_tickets_and_parkingLot() {
         // Given
         ParkingLot parkingLot = new ParkingLot();
-        SuperParkingBoy superParkingBoy = new SuperParkingBoy();
+        ParkingBoy superParkingBoy = new ParkingBoy(new SuperParkingStrategy());
         superParkingBoy.addParkingLot(parkingLot);
         Car car1 = new Car();
         Car car2 = new Car();
@@ -61,7 +61,7 @@ public class SuperParkingBoyTest {
     void should_throw_unrecognized_error_message_when_fetch_given_unrecognized_ticket_and_parkingLot() {
         // Given
         ParkingLot parkingLot = new ParkingLot();
-        SuperParkingBoy superParkingBoy = new SuperParkingBoy();
+        ParkingBoy superParkingBoy = new ParkingBoy(new SuperParkingStrategy());
         superParkingBoy.addParkingLot(parkingLot);
         Car car = new Car();
         Ticket ticket = new Ticket();
@@ -80,7 +80,7 @@ public class SuperParkingBoyTest {
     void should_throw_unrecognized_error_message_when_fetch_given_used_ticket_and_parkingLot() {
         // Given
         ParkingLot parkingLot = new ParkingLot();
-        SuperParkingBoy superParkingBoy = new SuperParkingBoy();
+        ParkingBoy superParkingBoy = new ParkingBoy(new SuperParkingStrategy());
         superParkingBoy.addParkingLot(parkingLot);
         Car car = new Car();
         Ticket ticket = superParkingBoy.park(car);
@@ -100,7 +100,7 @@ public class SuperParkingBoyTest {
     void should_throw_no_available_position_error_message_when_park_given_parkingLot_is_full_and_parkingLot() {
         // Given
         ParkingLot parkingLot = new ParkingLot(1);
-        SuperParkingBoy superParkingBoy = new SuperParkingBoy();
+        ParkingBoy superParkingBoy = new ParkingBoy(new SuperParkingStrategy());
         superParkingBoy.addParkingLot(parkingLot);
         Car car = new Car();
         superParkingBoy.park(car);
@@ -122,7 +122,7 @@ public class SuperParkingBoyTest {
         // Given
         ParkingLot parkingLot1 = new ParkingLot();
         ParkingLot parkingLot2 = new ParkingLot();
-        SuperParkingBoy superParkingBoy = new SuperParkingBoy();
+        ParkingBoy superParkingBoy = new ParkingBoy(new SuperParkingStrategy());
         superParkingBoy.addParkingLot(parkingLot1);
         superParkingBoy.addParkingLot(parkingLot2);
         Car car = new Car();
@@ -139,7 +139,7 @@ public class SuperParkingBoyTest {
         // Given
         ParkingLot parkingLot1 = new ParkingLot(1);
         ParkingLot parkingLot2 = new ParkingLot();
-        SuperParkingBoy superParkingBoy = new SuperParkingBoy();
+        ParkingBoy superParkingBoy = new ParkingBoy(new SuperParkingStrategy());
         superParkingBoy.addParkingLot(parkingLot1);
         superParkingBoy.addParkingLot(parkingLot2);
         Car car1 = new Car();
@@ -159,7 +159,7 @@ public class SuperParkingBoyTest {
         // Given
         ParkingLot parkingLot1 = new ParkingLot(1);
         ParkingLot parkingLot2 = new ParkingLot();
-        SuperParkingBoy superParkingBoy = new SuperParkingBoy();
+        ParkingBoy superParkingBoy = new ParkingBoy(new SuperParkingStrategy());
         superParkingBoy.addParkingLot(parkingLot1);
         superParkingBoy.addParkingLot(parkingLot2);
         Car car1 = new Car();
@@ -181,7 +181,7 @@ public class SuperParkingBoyTest {
         // Given
         ParkingLot parkingLot1 = new ParkingLot(1);
         ParkingLot parkingLot2 = new ParkingLot();
-        SuperParkingBoy superParkingBoy = new SuperParkingBoy();
+        ParkingBoy superParkingBoy = new ParkingBoy(new SuperParkingStrategy());
         superParkingBoy.addParkingLot(parkingLot1);
         superParkingBoy.addParkingLot(parkingLot2);
         Car car1 = new Car();
@@ -204,7 +204,7 @@ public class SuperParkingBoyTest {
         // Given
         ParkingLot parkingLot1 = new ParkingLot(1);
         ParkingLot parkingLot2 = new ParkingLot();
-        SuperParkingBoy superParkingBoy = new SuperParkingBoy();
+        ParkingBoy superParkingBoy = new ParkingBoy(new SuperParkingStrategy());
         superParkingBoy.addParkingLot(parkingLot1);
         superParkingBoy.addParkingLot(parkingLot2);
         Car car1 = new Car();
@@ -226,7 +226,7 @@ public class SuperParkingBoyTest {
         // Given
         ParkingLot parkingLot1 = new ParkingLot(1);
         ParkingLot parkingLot2 = new ParkingLot(1);
-        SuperParkingBoy superParkingBoy = new SuperParkingBoy();
+        ParkingBoy superParkingBoy = new ParkingBoy(new SuperParkingStrategy());
         superParkingBoy.addParkingLot(parkingLot1);
         superParkingBoy.addParkingLot(parkingLot2);
         Car car1 = new Car();
@@ -249,7 +249,7 @@ public class SuperParkingBoyTest {
     @Test
     void should_return_corresponding_car_when_fetch_given_two_parking_lots_and_five_tickets_and_five_cars() {
         //given
-        SuperParkingBoy superParkingBoy = new SuperParkingBoy();
+        ParkingBoy superParkingBoy = new ParkingBoy(new SuperParkingStrategy());
         superParkingBoy.addParkingLot(new ParkingLot(4));
         superParkingBoy.addParkingLot(new ParkingLot(8));
         Car car1 = new Car();

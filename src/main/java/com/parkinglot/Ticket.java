@@ -1,8 +1,8 @@
 package com.parkinglot;
 
 public class Ticket {
-    // random id
     private final int parkingLotId;
+
     public Ticket() {
         parkingLotId = 1;
     }
